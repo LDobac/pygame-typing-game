@@ -1,9 +1,18 @@
+'''
+    Game.py
+    
+    게임을 실행, 이벤트를 처리하는 클래스
+'''
+
 import pygame
 import sys
 
 from Utils import Color, WindowSize
 from Event import Event
 
+'''
+    Game 클래스 - Singletone 객체
+'''
 class Game:
 
     _instance = None
@@ -27,17 +36,24 @@ class Game:
 
         self.onPause = False
 
+    # pygame으로 부터 화면의 surface를 생성한다.
     def Init(self, startScene):
         self.screen = pygame.display.set_mode(self.windowSize)
 
+        # 시작할 Scene 초기화
         startScene.Init()
         self.curScene = startScene
 
     def Loop(self):
         
+        # 게임의 1 frame 업데이트
+
+        # 30fps 고정
         deltaTime = self.clock.tick(30)
+        # pygame.clock.tick의 반환값은 millisecond 단위로 반환, second 단위로 변경
         deltaTime *= 0.001
 
+        # update시 생기는 이벤트(화면, 키보드/마우스 등) 처리
         for event in pygame.event.get():
             Event.RaiseEvent(event)
             if event.type == pygame.QUIT:
@@ -51,7 +67,7 @@ class Game:
             self.newScene = None
 
         if not self.onPause:
-            # Clear
+            # Clear, 화면을 검은색으로 비운다
             self.screen.fill(Color.BLACK)
 
             # Update Scene
@@ -60,17 +76,20 @@ class Game:
             # Draw Scene
             self.curScene.Draw(self.screen)
 
-            # Flip backbuffer
+            # Flip backbuffer, 백 버퍼에 그려진 그림을 프론트 버퍼로 flip 한다
             pygame.display.flip()
 
+    # Scene 변경
     def ChangeScene(self, newScene, data=None):
         self.newScene = newScene
         self.newScene.data = data
 
         Event.ClearCallbacks()
 
+    # 게임 일시 정지
     def Pause(self):
         self.onPause = True
 
+    # 게임 재개
     def Resume(self):
         self.onPause = False

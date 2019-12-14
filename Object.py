@@ -1,3 +1,9 @@
+'''
+    Object.py
+    하나의 물체를 정의한다.
+    Object의 이름, 위치, 회전, 크기 값을 가진다
+'''
+
 class Object:
     def __init__(self, name):
         self.name = name
@@ -9,9 +15,11 @@ class Object:
         self.angle = 0
         self.scale = 1
 
+    # 물체가 Update 될 때 사용, deltaTime은 이전 업데이트와의 시간 간격
     def Update(self, deltaTime):
         pass
 
+    # 물체를 그리는 함수
     def Draw(self):
         pass
 

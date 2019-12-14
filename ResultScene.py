@@ -28,7 +28,7 @@ class ResultScene(Scene):
         self.background.SetPosition(WindowSize[0]/2, WindowSize[1]/2)
         self.background.SetLayer(0)
 
-        self.scoreFont = Font('ready','nago.ttf',60,"Your Score : " + str(self.data['score']) + " !")
+        self.scoreFont = Font('ready','nago.ttf',30,"Your Score : " + str(self.data['score']) + " !", Color.BLACK)
         self.scoreFont.SetPosition(WindowSize[0]/2, WindowSize[1]/2)
         self.scoreFont.SetLayer(10)
 

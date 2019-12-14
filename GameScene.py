@@ -45,7 +45,7 @@ class GameScene(Scene):
 
         self.generator = WordGenerator()
 
-        self.background = Sprite('background-image', "game_background.jpg")
+        self.background = Sprite('background-image', "background_1.jpg")
         self.background.SetPosition(WindowSize[0]/2, WindowSize[1]/2)
         self.background.SetLayer(0)
 

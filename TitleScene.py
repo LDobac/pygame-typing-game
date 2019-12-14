@@ -6,7 +6,7 @@ from Sprite import Sprite
 from Font import Font
 from Scene import Scene
 from Event import Event
-from Utils import WindowSize
+from Utils import WindowSize, GetResources
 
 from GameScene import GameScene
 from ScoreScene import ScoreScene
@@ -33,17 +33,21 @@ class TitleScene(Scene):
         Event.AddCallback(self.EventHandler)
 
         self.arrow = Sprite('arrow-cursor',"arrow.png")
-        self.arrow.SetPosition(WindowSize[0] * 0.4, WindowSize[1] * 0.6)
-        self.arrow.SetScale(0.1)
+        self.arrow.SetPosition(WindowSize[0] * 0.15, WindowSize[1] * 0.6)
+        self.arrow.SetScale(0.07)
         self.arrow.SetLayer(2)
 
         self.background = Sprite('background-image', "title_background.jpg")
         self.background.SetPosition(WindowSize[0]/2, WindowSize[1]/2)
         self.background.SetLayer(0)
 
-        self.titleFont = Font('start-menu','nago.ttf',80,"-게임-")
+        self.titleFont = Font('start-menu','nago.ttf',60,"Typing")
         self.titleFont.SetPosition(WindowSize[0]/2, WindowSize[1] * 0.2)
         self.titleFont.SetLayer(2)
+
+        self.titleFont2 = Font('start-menu2','nago.ttf',60,"Game")
+        self.titleFont2.SetPosition(WindowSize[0]/2, WindowSize[1] * 0.28)
+        self.titleFont2.SetLayer(2)
 
         self.startMenuFont = Font('start-menu','nago.ttf',45,"게임 시작")
         self.startMenuFont.SetPosition(WindowSize[0]/2, WindowSize[1] * 0.6)
@@ -56,6 +60,7 @@ class TitleScene(Scene):
         self.AddObject(self.arrow)
         self.AddObject(self.background)
         self.AddObject(self.titleFont)
+        self.AddObject(self.titleFont2)
         self.AddObject(self.startMenuFont)
         self.AddObject(self.scoreMenuFont)
 
