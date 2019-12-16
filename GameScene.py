@@ -123,6 +123,7 @@ class GameScene(Scene):
             elif event.key == pygame.K_UP:
                 self.score += 1
 
+    # 단어 10개 생성
     def GenerateWordRain(self):
         wordList = self.generator.GetWord(10)
         for word in wordList:
@@ -132,6 +133,7 @@ class GameScene(Scene):
             speed = random.randint(10,60)
             self.wordDrops.insert(0, [font,speed])
 
+    # 단어를 객체로 생성해 반환
     def WordToFontRain(self, word):
         newFont = Font('word','nago.ttf', 30, word,Color.BLACK)
         newFont.SetLayer(2)
@@ -143,6 +145,7 @@ class GameScene(Scene):
 
         return newFont
 
+    # 답이 맞는지 확인
     def CheckAnswer(self, answer):
         for wordDrop in self.wordDrops:
             if wordDrop[0].GetText() == answer:

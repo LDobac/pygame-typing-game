@@ -53,12 +53,12 @@ class ResultScene(Scene):
                 data = file.jsonData
 
                 if 'scores' in data:
-                    data['scores'].insert(0, [name,self.data['score']])
+                    data['scores'].insert(0, {"name" : name,"score" : self.data['score']})
                     data['scores'].sort(key=lambda score: score[1], reverse=True)
 
                     data['scores'] = data['scores'][:min(len(data['scores']), 6)]
                 else:
-                    data['scores'] = [[name, self.data['score']]]
+                    data['scores'] = [{"name" : name,"score" : self.data['score']}]
                 
                 file.Save()
                 

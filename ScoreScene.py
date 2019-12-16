@@ -32,8 +32,8 @@ class ScoreScene(Scene):
         if 'scores' in data:
             scoreList = data['scores']
             for i in range(len(scoreList)):
-                name = scoreList[i][0]
-                score = scoreList[i][1]
+                name = scoreList[i]["name"]
+                score = scoreList[i]["score"]
 
                 scoreFont = Font('ready','nago.ttf',60,str(name) + " : " + str(score))
                 scoreFont.SetPosition(WindowSize[0]/2, WindowSize[1] * (0.1 * i + 0.3))
